@@ -1,34 +1,58 @@
 /**
  * src/courses/vectors/scenes/Cap13_ExercisesSummary.tsx
  * Capítulo 13: Laboratorio de Ejercicios Multiformato y Síntesis Curricular.
- * Implementa una variedad amplia de problemas:
- * - Tipo 1: Cálculo directo interactivo con tiempo para pensar (MultipleChoice)
- * - Tipo 2: Problema inverso (WorkedExample)
- * - Tipo 6: Comparación metodológica (ConceptComparison: Geométrico vs Algebraico)
- * - Síntesis y pilares conceptuales (Summary)
+ * Rediseñado como Tablero Científico Dinámico:
+ * - Fase 1: Ejercicio Interactivo con Cuenta Regresiva (Norma)
+ * - Fase 2: Problema Inverso de Fuerzas (Magnitud y Ángulo a Componentes)
+ * - Fase 3: Comparación Metodológica (Geométrico vs Algebraico)
+ * - Fase 4: Pilares Maestros de Síntesis del Curso
  */
 
 import React from "react";
-import { ChapterComposition } from "../../../compositions/ChapterComposition";
-import { Sequence } from "remotion";
+import { Sequence, useCurrentFrame } from "remotion";
+import { DynamicBoardLayout } from "../../../components/board";
 import { MultipleChoice } from "../../../components/educational/MultipleChoice";
 import { WorkedExample } from "../../../components/educational/WorkedExample";
 import { ConceptComparison } from "../../../components/educational/ConceptComparison";
 import { Summary } from "../../../components/educational/Summary";
 import { VECTORS_COURSE } from "../content/data";
 
+const PHASES = [
+  { id: "interactive", label: "1. Reto Interactivo: Norma Pitagórica" },
+  { id: "inverse", label: "2. Problema Inverso: De Fuerza Polar a Cartesianas" },
+  { id: "comparison", label: "3. Comparación: Geometría vs Álgebra" },
+  { id: "summary", label: "4. Síntesis y Pilares Maestros" },
+];
+
 export const Cap13_ExercisesSummary: React.FC = () => {
+  const frame = useCurrentFrame();
   const meta = VECTORS_COURSE.cap13_exercises_summary;
 
+  // 4 fases: 250f, 230f, 220f, 200f (Total 900 frames)
+  const currentPhaseIndex = frame < 250 ? 0 : frame < 480 ? 1 : frame < 700 ? 2 : 3;
+
+  let activeTakeaway = "Entrenamiento: Calcula mentalmente la norma euclidiana antes de que expire la cuenta regresiva.";
+  if (currentPhaseIndex === 1) {
+    activeTakeaway = "Problema inverso: F_x = |F|cos(theta) y F_y = |F|sin(theta) descomponen cualquier magnitud polar.";
+  } else if (currentPhaseIndex === 2) {
+    activeTakeaway = "Metodología: El enfoque geométrico brinda intuición física; el analítico escala a n dimensiones.";
+  } else if (currentPhaseIndex === 3) {
+    activeTakeaway = "Conexión Curricular: Los vectores son los cimientos inmediatos del Álgebra Matricial y Transformaciones.";
+  }
+
   return (
-    <ChapterComposition
+    <DynamicBoardLayout
+      topic="vectors"
       courseTitle={VECTORS_COURSE.title}
       chapterNumber="13"
       title={meta.title}
       subtitle={meta.subtitle}
-      durationFrames={meta.durationFrames}
+      currentPhaseIndex={currentPhaseIndex}
+      totalPhases={4}
+      phases={PHASES}
+      activeTakeaway={activeTakeaway}
     >
-      <div className="w-full flex flex-col justify-center items-center max-w-5xl mx-auto">
+      <div className="w-full flex flex-col justify-center items-center max-w-5xl mx-auto h-full">
         {/* =========================================================================
             1. EJERCICIO INTERACTIVO (Tipo 1: Cálculo Directo con Cuenta Regresiva)
             ========================================================================= */}
@@ -120,7 +144,7 @@ export const Cap13_ExercisesSummary: React.FC = () => {
                   "Puede ocultar la interpretación espacial si solo se memorizan fórmulas.",
                 ],
                 bestFor: "Motores gráficos, Machine Learning, simulaciones y física computacional.",
-                color: "#FACC15",
+                color: "#FBBF24",
               }}
             />
           </div>
@@ -145,7 +169,7 @@ export const Cap13_ExercisesSummary: React.FC = () => {
                   title: "2. Norma y Versor Unitario",
                   keyFormula: "\\|v\\| = \\sqrt{\\sum v_i^2}, \\quad \\hat{u} = \\frac{\\vec{v}}{\\|v\\|}",
                   takeaway: "Separar magnitud (cuánto) de dirección pura (hacia dónde) es la base del cómputo gráfico y normalizado.",
-                  color: "#FACC15",
+                  color: "#FBBF24",
                 },
                 {
                   title: "3. Productos y Ortogonalidad",
@@ -159,6 +183,6 @@ export const Cap13_ExercisesSummary: React.FC = () => {
           </div>
         </Sequence>
       </div>
-    </ChapterComposition>
+    </DynamicBoardLayout>
   );
 };

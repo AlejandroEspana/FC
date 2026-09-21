@@ -6,3 +6,4 @@ export * from "./vectors";
 export * from "./matrices";
 export { DefinitionCard, ErrorCard, BulletList } from "./common";
 export * from "./educational";
+export * from "./board";

@@ -91,3 +91,5 @@ export function getColorBySemanticRole(role: SemanticRole): string {
       return EDUCATIONAL_THEME.textSecondary;
   }
 }
+
+export { TOPIC_THEMES, getTopicTheme, type CourseTopic, type TopicThemeConfig } from "./boardTheme";

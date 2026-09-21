@@ -1,13 +1,31 @@
+/**
+ * src/courses/discrete-models/scenes/Cap07_CobwebPlot.tsx
+ * Capítulo 07: El Diagrama de Telaraña (Cobweb Plot) en Sistemas Dinámicos.
+ * Rediseñado como Tablero Científico Dinámico con colores claros de Modelos Discretos.
+ */
+
 import React, { useMemo } from "react";
-import { ChapterComposition } from "../../../compositions/ChapterComposition";
+import { useCurrentFrame } from "remotion";
+import {
+  DynamicBoardLayout,
+  BoardPanel,
+  BoardEquationWorkbench,
+  BoardCallout,
+} from "../../../components/board";
 import { CoordinatePlane } from "../../../components/graphs/CoordinatePlane";
 import { FunctionGraph } from "../../../components/graphs/FunctionGraph";
 import { CobwebPlot } from "../../../components/graphs/CobwebPlot";
 import { generateCobwebPath } from "../../../math/discrete";
 import { DISCRETE_COURSE } from "../content/data";
+import { TOPIC_THEMES } from "../../../theme/boardTheme";
+
+const PHASES = [
+  { id: "cobweb", label: "Iteración en Espacio de Fases (Telaraña)" },
+];
 
 export const Cap07_CobwebPlot: React.FC = () => {
   const meta = DISCRETE_COURSE.cap07_cobweb_plot;
+  const theme = TOPIC_THEMES.discrete;
   const r = meta.rValue;
   const x0 = meta.x0;
 
@@ -18,60 +36,99 @@ export const Cap07_CobwebPlot: React.FC = () => {
   }, [r, x0]);
 
   return (
-    <ChapterComposition
+    <DynamicBoardLayout
+      topic="discrete"
       courseTitle={DISCRETE_COURSE.title}
       chapterNumber="07"
-      title={meta.title}
-      subtitle={meta.subtitle}
-      durationFrames={meta.durationFrames}
+      title="El Diagrama de Telaraña (Cobweb Plot)"
+      subtitle="Visualización Geométrica de Órbitas, Convergencia al Atractor y Rebote sobre la Recta Identidad"
+      currentPhaseIndex={0}
+      totalPhases={1}
+      phases={PHASES}
+      activeTakeaway="Mecánica Cobweb: Paso vertical evalúa f(x_n); paso horizontal sobre y = x proyecta la salida como nueva entrada."
     >
-      <div className="grid grid-cols-12 gap-8 w-full items-center">
-        {/* Gráfica de Telaraña (Cobweb) */}
-        <div className="col-span-7 flex flex-col items-center justify-center p-4 bg-[#121829] rounded-2xl border border-[#1E2942] shadow-xl">
-          <div className="flex items-center justify-between w-full px-2 mb-2 font-mono text-xs">
-            <span className="text-[#38BDF8] font-bold">Mapa Logístico r = {r}</span>
-            <span className="text-[#FACC15]">Semilla x₀ = {x0}</span>
-          </div>
+      <div className="grid grid-cols-12 gap-6 w-full items-center h-full px-2">
+        {/* Columna Izquierda: Gráfica de Telaraña (Cobweb) */}
+        <div className="col-span-7 flex flex-col items-center justify-center">
+          <BoardPanel
+            tag="ESPACIO DE FASES DISCRETO"
+            title={`Mapa Logístico (r = ${r}, x₀ = ${x0})`}
+            topic="discrete"
+            accentColor={theme.primary}
+          >
+            <div className="flex items-center justify-between w-full px-2 mb-2 font-mono text-xs">
+              <span className="text-cyan-300 font-bold">Curva f(x) = {r}x(1-x)</span>
+              <span className="text-amber-300 font-bold">Semilla Inicial x₀ = {x0}</span>
+            </div>
 
-          <CoordinatePlane width={540} height={400} xRange={[-0.05, 1.05]} yRange={[-0.05, 1.05]} stepX={0.2} stepY={0.2}>
-            {/* Recta identidad y = x */}
-            <FunctionGraph f={(x) => x} xRange={[0, 1]} color="#64748B" strokeDasharray="3 3" strokeWidth={1.8} />
+            <CoordinatePlane
+              width={540}
+              height={380}
+              xRange={[-0.05, 1.05]}
+              yRange={[-0.05, 1.05]}
+              stepX={0.2}
+              stepY={0.2}
+            >
+              {/* Recta identidad y = x */}
+              <FunctionGraph
+                f={(x) => x}
+                xRange={[0, 1]}
+                color="#F8FAFC"
+                strokeDasharray="4 4"
+                strokeWidth={1.8}
+              />
 
-            {/* Curva logística y = r x (1 - x) */}
-            <FunctionGraph f={logisticFn} xRange={[0, 1]} color="#38BDF8" strokeWidth={3} />
+              {/* Curva logística y = r x (1 - x) */}
+              <FunctionGraph
+                f={logisticFn}
+                xRange={[0, 1]}
+                color={theme.primary}
+                strokeWidth={3.5}
+              />
 
-            {/* Trayectoria de telaraña dinámica */}
-            <CobwebPlot segments={segments} color="#FACC15" delayPerSegmentFrames={15} />
-          </CoordinatePlane>
+              {/* Trayectoria de telaraña dinámica */}
+              <CobwebPlot
+                segments={segments}
+                color={theme.secondary}
+                delayPerSegmentFrames={15}
+              />
+            </CoordinatePlane>
+          </BoardPanel>
         </div>
 
-        {/* Panel explicativo */}
-        <div className="col-span-5 flex flex-col gap-5 p-7 bg-[#121829]/70 rounded-2xl border border-[#1E2942]">
-          <span className="text-xs uppercase font-extrabold text-[#38BDF8] tracking-widest font-mono">
-            Mecánica de la Telaraña
-          </span>
-          <h3 className="text-xl font-bold text-white">
-            Evolución visual de la órbita sobre la identidad
-          </h3>
+        {/* Columna Derecha: Workbench y Callout */}
+        <div className="col-span-5 flex flex-col gap-3.5">
+          <BoardPanel
+            tag="ALGORITMO COBWEB"
+            title="Los Dos Pasos de la Órbita"
+            topic="discrete"
+            accentColor={theme.result}
+          >
+            <BoardEquationWorkbench
+              topic="discrete"
+              title="Evolución Iterativa"
+              formula="x_{n+1} = f(x_n) = 2.8 \cdot x_n (1 - x_n)"
+              steps={[
+                { label: "1. Salto Vertical:", latex: "(x_n, \\; x_n) \\rightarrow (x_n, \\; f(x_n))", note: "Evalúa la función f" },
+                { label: "2. Salto Horizontal:", latex: "(x_n, \\; f(x_n)) \\rightarrow (f(x_n), \\; f(x_n))", note: "Viaja a la recta y = x", highlight: true },
+              ]}
+              result={{
+                latex: "x^* = 1 - \\frac{1}{r} = 1 - \\frac{1}{2.8} \\approx 0.643",
+                label: "PUNTO FIJO ATRACTOR ESTABLE",
+                interpretation: "La espiral se cierra convergiendo exactamente al valor de equilibrio.",
+              }}
+            />
+          </BoardPanel>
 
-          <div className="space-y-3 font-sans text-xs text-[#CBD5E1] leading-relaxed">
-            <div className="p-3 rounded-xl bg-[#0A0D18] border border-[#1E2942]">
-              <strong className="text-[#38BDF8] block mb-0.5">1. Paso Vertical:</strong>
-              Evalúa la función: sube desde <span className="font-mono text-white">x_n</span> hasta la curva azul <span className="font-mono text-white">f(x_n) = x_{`{n+1}`}</span>.
-            </div>
-
-            <div className="p-3 rounded-xl bg-[#0A0D18] border border-[#1E2942]">
-              <strong className="text-[#FACC15] block mb-0.5">2. Paso Horizontal:</strong>
-              Reubica el valor: viaja a la recta gris <span className="font-mono text-white">y = x</span> para convertir la salida en la nueva entrada del siguiente paso.
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-[#34D399]/10 border border-[#34D399]/30">
-              <span className="text-[#34D399] font-bold block mb-0.5">Convergencia al Atractor:</span>
-              La trayectoria espiralada se enrolla alrededor de la intersección <span className="font-mono font-bold text-white">x* = 1 - 1/2.8 ≈ 0.643</span>.
-            </div>
-          </div>
+          <BoardCallout
+            type="insight"
+            topic="discrete"
+            title="Criterio de Estabilidad Derivativo"
+            text="Dado que |f'(x*)| = |2 - r| = |2 - 2.8| = 0.8 < 1, el punto fijo actúa como un sumidero o atractor asintótico estable que captura todas las trayectorias cercanas."
+            math="|f'(x^*)| < 1 \\implies \\text{Órbita Asintóticamente Estable}"
+          />
         </div>
       </div>
-    </ChapterComposition>
+    </DynamicBoardLayout>
   );
 };

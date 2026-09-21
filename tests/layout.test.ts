@@ -54,3 +54,25 @@ test("Layout: Bounding Box dentro de Safe Area 1080p", () => {
   assert.equal(check.overflowX, 0);
   assert.equal(check.overflowY, 0);
 });
+
+test("Layout: Cuadrantes del Tablero Dinámico respetan Safe Area y no colisionan", () => {
+  // Cuadrante Izquierdo (Workbench/Ecuaciones): x=96..880 (ancho: 780)
+  const leftPanel = { x: 96, y: 130, width: 780, height: 860 };
+  // Cuadrante Derecho (Lienzo Gráfico/3D): x=924..1824 (ancho: 900)
+  const rightPanel = { x: 924, y: 130, width: 900, height: 860 };
+
+  // 1. Ambos deben estar estrictamente dentro de Safe Area (Education Content Zone)
+  assert.equal(isInsideSafeArea(leftPanel, "educationContentZone"), true);
+  assert.equal(isInsideSafeArea(rightPanel, "educationContentZone"), true);
+
+  // 2. No deben tener colisión ni superposición entre sí (gap de 48px)
+  const overlap = computeOverlap(leftPanel, rightPanel);
+  assert.equal(overlap.hasCollision, false);
+  assert.equal(overlap.overlapArea, 0);
+
+  const noOverlapCheck = validateNoOverlap(
+    { name: "Panel Izquierdo Tablero", box: leftPanel },
+    { name: "Panel Derecho Tablero", box: rightPanel }
+  );
+  assert.equal(noOverlapCheck.hasCollision, false);
+});

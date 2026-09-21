@@ -4,3 +4,4 @@ export * from "./VectorSumGraph";
 export * from "./VectorSubtractionGraph";
 export * from "./ScalarMultGraph";
 export * from "./Vector3D";
+export * from "./VectorProjectionGraph";

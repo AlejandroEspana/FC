@@ -113,31 +113,49 @@ export const Vector2D: React.FC<Vector2DProps> = ({
       />
 
       {/* Etiqueta del vector */}
-      {label && animProgress > 0.3 && (
-        <g opacity={labelOpacity}>
-          <rect
-            x={arrowPointX + 8}
-            y={arrowPointY - 14}
-            width={label.length * 8 + 14}
-            height={20}
-            rx={6}
-            fill="#0A0D18"
-            stroke={color}
-            strokeWidth="1"
-            opacity="0.9"
-          />
-          <text
-            x={arrowPointX + 15}
-            y={arrowPointY}
-            fill="#F8FAFC"
-            fontSize="11"
-            fontWeight="bold"
-            fontFamily="JetBrains Mono, monospace"
-          >
-            {label}
-          </text>
-        </g>
-      )}
+      {label && animProgress > 0.3 && (() => {
+        const cleanLabel = label
+          .replace(/\\\\vec\{([^}]+)\}/g, "$1")
+          .replace(/\\vec\{([^}]+)\}/g, "$1")
+          .replace(/\\mathrm\{([^}]+)\}/g, "$1")
+          .replace(/\\hat\{([^}]+)\}/g, "$1̂")
+          .replace(/\\theta/g, "θ")
+          .replace(/\\perp/g, "⟂")
+          .replace(/\\parallel/g, "∥")
+          .replace(/\\text\{([^}]+)\}/g, "$1")
+          .replace(/\\/g, "");
+
+        const rectWidth = Math.max(48, cleanLabel.length * 7.5 + 16);
+        const isNearRight = arrowPointX + rectWidth > 490;
+        const rectX = isNearRight ? arrowPointX - rectWidth - 8 : arrowPointX + 8;
+        const textX = rectX + 8;
+
+        return (
+          <g opacity={labelOpacity}>
+            <rect
+              x={rectX}
+              y={arrowPointY - 14}
+              width={rectWidth}
+              height={20}
+              rx={6}
+              fill="#0A0D18"
+              stroke={color}
+              strokeWidth="1.5"
+              opacity="0.95"
+            />
+            <text
+              x={textX}
+              y={arrowPointY}
+              fill="#F8FAFC"
+              fontSize="11"
+              fontWeight="bold"
+              fontFamily="JetBrains Mono, monospace"
+            >
+              {cleanLabel}
+            </text>
+          </g>
+        );
+      })()}
     </g>
   );
 };

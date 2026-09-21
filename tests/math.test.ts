@@ -11,6 +11,8 @@ import {
   dotProduct,
   crossProduct,
   normalizeVector,
+  scalarProjection,
+  vectorProjection,
 } from "../src/math/vectors";
 
 import {
@@ -54,6 +56,23 @@ test("Vectores: Operaciones básicas y álgebra euclidiana", () => {
   // Producto Escalar u · v = (3)(1) + (4)(2) = 3 + 8 = 11
   assert.equal(dotProduct(u, v), 11);
 
+  // Proyecciones: comp_v(u) y proj_v(u)
+  // v = (4, 0), u = (3, 3.5)
+  const vAxis = vec2(4, 0);
+  const uVector = vec2(3, 3.5);
+  const comp = scalarProjection(uVector, vAxis);
+  assert.equal(comp, 3.0);
+
+  const proj = vectorProjection(uVector, vAxis);
+  assert.equal(proj.x, 3.0);
+  assert.equal(proj.y, 0.0);
+
+  // Descomposición ortogonal: u = proj + perp
+  const perp = subtractVectors(uVector, proj);
+  assert.equal(perp.x, 0.0);
+  assert.equal(perp.y, 3.5);
+  assert.equal(dotProduct(proj, perp), 0); // Ortogonalidad estricta
+
   // Producto Cruz en R³: (1, 0, 0) x (0, 1, 0) = (0, 0, 1)
   const iHat = vec3(1, 0, 0);
   const jHat = vec3(0, 1, 0);
@@ -61,6 +80,10 @@ test("Vectores: Operaciones básicas y álgebra euclidiana", () => {
   assert.equal(kHat.x, 0);
   assert.equal(kHat.y, 0);
   assert.equal(kHat.z, 1);
+
+  // Anti-conmutatividad: jHat x iHat = -(iHat x jHat) = (0, 0, -1)
+  const antiK = crossProduct(jHat, iHat);
+  assert.equal(antiK.z, -1);
 });
 
 test("Matrices: Multiplicación, determinantes y descomposición", () => {
