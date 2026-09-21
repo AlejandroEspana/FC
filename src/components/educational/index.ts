@@ -7,3 +7,5 @@ export * from "./ErrorAnalysis";
 export * from "./ConceptComparison";
 export * from "./StepByStepSolution";
 export * from "./Summary";
+export * from "./GradualDifficultyWorkbench";
+

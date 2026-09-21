@@ -30,7 +30,7 @@ const ParallelogramLines: React.FC<{
       {/* Área del paralelogramo sombreada */}
       <polygon
         points={`${oX},${oY} ${uX},${uY} ${wX},${wY} ${vX},${vY}`}
-        fill="rgba(56, 189, 248, 0.08)"
+        fill="rgba(37, 99, 235, 0.08)"
         stroke="none"
       />
       {/* Lado paralelo a v desde u hasta w */}
@@ -39,7 +39,7 @@ const ParallelogramLines: React.FC<{
         y1={uY}
         x2={wX}
         y2={wY}
-        stroke="#FBBF24"
+        stroke="#D97706"
         strokeWidth="2"
         strokeDasharray="4 4"
       />
@@ -49,7 +49,7 @@ const ParallelogramLines: React.FC<{
         y1={vY}
         x2={wX}
         y2={wY}
-        stroke="#38BDF8"
+        stroke="#2563EB"
         strokeWidth="2"
         strokeDasharray="4 4"
       />
@@ -147,18 +147,18 @@ export const VectorSumGraph: React.FC<VectorSumGraphProps> = ({
         )}
       </CoordinatePlane>
 
-      <div className="flex flex-wrap items-center justify-center gap-5 text-xs text-slate-300 font-mono bg-black/35 px-4 py-2 rounded-xl border border-white/10 w-full max-w-[540px]">
+      <div className="flex flex-wrap items-center justify-center gap-5 text-xs text-slate-700 font-mono bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 w-full max-w-[540px] shadow-2xs">
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.primary }} />
-          <span>u = (3, 1)</span>
+          <span className="font-semibold">u = (3, 1)</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.secondary }} />
-          <span>v = (1.5, 2.5)</span>
+          <span className="font-semibold">v = (1.5, 2.5)</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.result }} />
-          <span className="font-bold text-white">w = (4.5, 3.5)</span>
+          <span className="font-black text-slate-900">w = (4.5, 3.5)</span>
         </div>
       </div>
     </div>

@@ -45,30 +45,30 @@ export const BulletList: React.FC<BulletListProps> = ({
               opacity,
               transform: `translateY(${translateY}px)`,
             }}
-            className="flex items-start gap-4 p-4 rounded-xl bg-[#121829]/70 border border-[#1E2942] backdrop-blur-sm"
+            className="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm"
           >
-            <div className="p-1 rounded-full bg-[#38BDF8]/10 text-[#38BDF8] shrink-0 mt-0.5">
+            <div className="p-1 rounded-full bg-blue-50 text-blue-600 shrink-0 mt-0.5 border border-blue-200">
               <CheckCircle className="w-5 h-5" />
             </div>
 
             <div className="flex flex-col flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-base font-bold text-white">{item.title}</span>
+                <span className="text-base font-bold text-slate-900">{item.title}</span>
                 {item.badge && (
                   <span
                     style={{
-                      backgroundColor: `${item.badgeColor || "#38BDF8"}15`,
-                      color: item.badgeColor || "#38BDF8",
-                      borderColor: `${item.badgeColor || "#38BDF8"}40`,
+                      backgroundColor: `${item.badgeColor || "#2563EB"}15`,
+                      color: item.badgeColor || "#2563EB",
+                      borderColor: `${item.badgeColor || "#2563EB"}40`,
                     }}
-                    className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded border"
+                    className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded border font-semibold"
                   >
                     {item.badge}
                   </span>
                 )}
               </div>
               {item.description && (
-                <p className="text-sm text-[#CBD5E1] leading-relaxed mt-1">
+                <p className="text-sm text-slate-600 leading-relaxed mt-1 font-sans">
                   {item.description}
                 </p>
               )}

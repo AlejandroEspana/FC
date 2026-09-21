@@ -79,15 +79,15 @@ export const ScalarMultGraph: React.FC = () => {
       </CoordinatePlane>
 
       {/* Panel explicativo del estado del escalar */}
-      <div className="p-4 rounded-xl bg-[#0A0D18] border border-[#1E2942] w-full flex items-center justify-between">
+      <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 w-full flex items-center justify-between">
         <div className="flex flex-col">
           <span style={{ color: phaseColor }} className="text-xs font-bold uppercase tracking-wider">
             {phaseName}
           </span>
-          <p className="text-sm text-[#CBD5E1] mt-0.5">{explanation}</p>
+          <p className="text-sm text-slate-700 mt-0.5">{explanation}</p>
         </div>
-        <div className="px-4 py-2 rounded-lg bg-[#121829] border border-[#1E2942] text-center">
-          <span className="text-[10px] text-[#94A3B8] uppercase block">Factor c</span>
+        <div className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-center shadow-sm">
+          <span className="text-[10px] text-slate-500 uppercase block font-semibold">Factor c</span>
           <span style={{ color: phaseColor }} className="text-xl font-mono font-bold">
             c = {c.toFixed(2)}
           </span>

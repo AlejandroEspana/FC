@@ -51,26 +51,26 @@ export const MatrixMultiplicationStep: React.FC<MatrixMultiplicationStepProps> =
       </div>
 
       {/* Tarjeta de cálculo paso a paso */}
-      <div className="w-full max-w-2xl p-5 rounded-2xl bg-[#121829] border border-[#1E2942] shadow-xl flex flex-col gap-3">
-        <div className="flex items-center justify-between border-b border-[#1E2942] pb-2">
-          <span className="text-xs uppercase font-bold tracking-wider text-[#34D399]">
+      <div className="w-full max-w-2xl p-5 rounded-2xl bg-white border border-slate-200 shadow-md flex flex-col gap-3">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+          <span className="text-xs uppercase font-bold tracking-wider text-emerald-700">
             Cálculo del Elemento ({currentRow + 1}, {currentCol + 1})
           </span>
-          <span className="text-xs text-[#94A3B8] font-mono">
+          <span className="text-xs text-slate-500 font-mono font-medium">
             Fila {currentRow + 1} de A · Columna {currentCol + 1} de B
           </span>
         </div>
 
-        <div className="flex items-center justify-center p-3 rounded-xl bg-[#0A0D18] border border-[#1E2942]">
+        <div className="flex items-center justify-center p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900">
           <Equation latex={step.latexExpression} fontSize="text-xl" />
         </div>
 
-        <div className="flex items-center justify-around text-xs font-mono text-[#94A3B8] pt-1">
+        <div className="flex items-center justify-around text-xs font-mono text-slate-600 pt-1">
           {step.terms.map((t, idx) => (
-            <span key={idx} className="bg-[#1E2942]/60 px-3 py-1 rounded-md">
-              <span className="text-[#38BDF8]">{t.a}</span> ×{" "}
-              <span className="text-[#FACC15]">{t.b}</span> ={" "}
-              <span className="text-white font-bold">{t.product}</span>
+            <span key={idx} className="bg-slate-100 border border-slate-200 px-3 py-1 rounded-md">
+              <span className="text-blue-700 font-bold">{t.a}</span> ×{" "}
+              <span className="text-amber-700 font-bold">{t.b}</span> ={" "}
+              <span className="text-slate-900 font-bold">{t.product}</span>
             </span>
           ))}
         </div>

@@ -55,58 +55,58 @@ export const BoardPanel: React.FC<BoardPanelProps> = ({
       style={{
         opacity,
         transform: `translateY(${translateY}px)`,
-        backgroundColor: theme.panelBg,
-        borderColor: `${color}40`,
-        boxShadow: `0 12px 32px rgba(0, 0, 0, 0.45), 0 0 24px ${color}15`,
+        backgroundColor: "#FFFFFF",
+        borderColor: `${color}35`,
+        boxShadow: `0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04), 0 0 16px ${color}10`,
         width: typeof width === "number" ? `${width}px` : width,
         height: typeof height === "number" ? `${height}px` : height,
         ...style,
       }}
-      className={`rounded-2xl border backdrop-blur-md flex flex-col justify-between overflow-hidden relative ${className}`}
+      className={`rounded-2xl border flex flex-col justify-between overflow-hidden relative shadow-md ${className}`}
     >
-      {/* Barra superior de acento con color */}
+      {/* Barra superior de acento con color temático */}
       <div
-        className="h-1 w-full shrink-0"
+        className="h-1.5 w-full shrink-0"
         style={{ backgroundColor: color }}
       />
 
       {/* Encabezado del Panel si tiene título o tag */}
       {(title || tag) && (
-        <div className="px-5 pt-4 pb-2 flex items-center justify-between border-b border-white/5 shrink-0">
+        <div className="px-5 pt-3.5 pb-2.5 flex items-center justify-between border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-2.5">
             {tag && (
               <span
                 style={{
-                  backgroundColor: `${color}18`,
-                  borderColor: `${color}45`,
+                  backgroundColor: `${color}15`,
+                  borderColor: `${color}40`,
                   color: color,
                 }}
-                className="text-[10px] font-mono font-extrabold uppercase px-2 py-0.5 rounded border tracking-wider"
+                className="text-[10px] font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-full border tracking-wider"
               >
                 {tag}
               </span>
             )}
             {title && (
-              <h3 className="text-base font-bold text-white tracking-tight">
+              <h3 className="text-base font-extrabold text-slate-900 tracking-tight">
                 {title}
               </h3>
             )}
           </div>
-          <div className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-            <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+          <div className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-slate-200" />
+            <span className="w-2 h-2 rounded-full bg-slate-200" />
           </div>
         </div>
       )}
 
       {/* Cuerpo de Contenido */}
-      <div className="p-5 flex-1 flex flex-col justify-center overflow-hidden">
+      <div className="p-5 flex-1 flex flex-col justify-center overflow-hidden text-slate-800">
         {children}
       </div>
 
       {/* Pie del Panel opcional */}
       {footer && (
-        <div className="px-5 py-2.5 bg-black/25 border-t border-white/5 text-xs text-slate-300 shrink-0">
+        <div className="px-5 py-2.5 bg-slate-50 border-t border-slate-100 text-xs text-slate-600 font-medium shrink-0">
           {footer}
         </div>
       )}

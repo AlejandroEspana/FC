@@ -36,7 +36,7 @@ export const ChapterComposition: React.FC<ChapterCompositionProps> = ({
         {children}
       </div>
 
-      <footer className="w-full flex justify-between text-xs text-[#64748B] pt-3 border-t border-[#1E2942]/60 font-mono">
+      <footer className="w-full flex justify-between text-xs text-slate-500 pt-3 border-t border-slate-200 font-mono">
         <span>
           Capítulo {chapterNumber}: {title}
         </span>

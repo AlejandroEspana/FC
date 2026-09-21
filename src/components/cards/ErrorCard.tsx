@@ -29,48 +29,48 @@ export const ErrorCard: React.FC<ErrorCardProps> = ({
   return (
     <div
       style={{ opacity, transform: `scale(${interpolate(spr, [0, 1], [0.96, 1])})` }}
-      className="w-full max-w-4xl mx-auto p-8 rounded-2xl bg-[#121829]/95 border border-[#F87171]/40 shadow-2xl relative overflow-hidden backdrop-blur-md"
+      className="w-full max-w-4xl mx-auto p-8 rounded-2xl bg-white border border-rose-200 shadow-lg relative overflow-hidden"
     >
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#F87171]" />
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-rose-500" />
 
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-2.5 rounded-xl bg-[#F87171]/20 border border-[#F87171]/40 text-[#F87171]">
+        <div className="p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-600">
           <AlertTriangle className="w-6 h-6" />
         </div>
         <div>
-          <span className="text-xs uppercase font-extrabold tracking-widest text-[#F87171]">
+          <span className="text-xs uppercase font-extrabold tracking-widest text-rose-600 font-mono">
             Error Frecuente & Concepto Erróneo
           </span>
-          <h3 className="text-xl font-bold text-white">Cuidado con esta asunción falsa</h3>
+          <h3 className="text-xl font-bold text-slate-900">Cuidado con esta asunción falsa</h3>
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-6 mb-4">
         {/* Error */}
-        <div className="p-4 rounded-xl bg-[#0A0D18]/80 border border-[#F87171]/30 flex items-start gap-3">
-          <XCircle className="w-5 h-5 text-[#F87171] shrink-0 mt-0.5" />
+        <div className="p-4 rounded-xl bg-rose-50/80 border border-rose-200 flex items-start gap-3">
+          <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
           <div>
-            <span className="text-xs font-bold text-[#F87171] uppercase tracking-wider block mb-1">
+            <span className="text-xs font-bold text-rose-700 uppercase tracking-wider block mb-1">
               Afirmación Incorrecta
             </span>
-            <p className="text-sm text-[#F8FAFC] font-medium">{errorStatement}</p>
+            <p className="text-sm text-slate-800 font-medium">{errorStatement}</p>
           </div>
         </div>
 
         {/* Corrección */}
-        <div className="p-4 rounded-xl bg-[#0A0D18]/80 border border-[#34D399]/30 flex items-start gap-3">
-          <CheckCircle2 className="w-5 h-5 text-[#34D399] shrink-0 mt-0.5" />
+        <div className="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200 flex items-start gap-3">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
           <div>
-            <span className="text-xs font-bold text-[#34D399] uppercase tracking-wider block mb-1">
+            <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block mb-1">
               Realidad Matemática
             </span>
-            <p className="text-sm text-[#F8FAFC] font-medium">{correction}</p>
+            <p className="text-sm text-slate-800 font-medium">{correction}</p>
           </div>
         </div>
       </div>
 
-      <div className="p-4 rounded-xl bg-[#1E2942]/40 border border-[#1E2942] text-sm text-[#CBD5E1] leading-relaxed">
-        <strong className="text-white block mb-1">¿Por qué ocurre este error?</strong>
+      <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-700 leading-relaxed">
+        <strong className="text-slate-900 block mb-1">¿Por qué ocurre este error?</strong>
         {why}
       </div>
     </div>

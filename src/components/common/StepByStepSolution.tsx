@@ -12,12 +12,12 @@ export const StepByStepSolution: React.FC<StepByStepSolutionProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`flex flex-col gap-4 p-7 bg-[#121829]/90 rounded-2xl border border-[#1E2942] shadow-xl ${className}`}>
+    <div className={`flex flex-col gap-4 p-7 bg-white rounded-2xl border border-slate-200 shadow-md ${className}`}>
       <div>
-        <span className="text-xs uppercase font-extrabold text-[#38BDF8] tracking-widest font-mono">
+        <span className="text-xs uppercase font-extrabold text-blue-600 tracking-widest font-mono">
           {exercise.level}
         </span>
-        <p className="text-sm text-slate-200 mt-1 font-sans leading-relaxed">
+        <p className="text-sm text-slate-800 mt-1 font-sans leading-relaxed">
           {exercise.prompt}
         </p>
       </div>
@@ -26,12 +26,12 @@ export const StepByStepSolution: React.FC<StepByStepSolutionProps> = ({
         {exercise.steps.map((step, idx) => (
           <div
             key={idx}
-            className="p-3 rounded-xl bg-[#0A0D18] border border-[#1E2942] flex items-center justify-between"
+            className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-slate-900"
           >
-            <span className="text-xs text-[#94A3B8] font-sans">{step.label}:</span>
+            <span className="text-xs text-slate-600 font-sans font-medium">{step.label}:</span>
             {step.math && <Equation latex={step.math} fontSize="text-sm" block={false} />}
             {step.explanation && (
-              <span className="text-xs text-[#34D399] font-sans">{step.explanation}</span>
+              <span className="text-xs text-emerald-700 font-sans font-semibold">{step.explanation}</span>
             )}
           </div>
         ))}

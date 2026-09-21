@@ -138,15 +138,15 @@ export const Vector2D: React.FC<Vector2DProps> = ({
               width={rectWidth}
               height={20}
               rx={6}
-              fill="#0A0D18"
+              fill="#FFFFFF"
               stroke={color}
-              strokeWidth="1.5"
-              opacity="0.95"
+              strokeWidth="1.8"
+              opacity="0.98"
             />
             <text
               x={textX}
               y={arrowPointY}
-              fill="#F8FAFC"
+              fill="#0F172A"
               fontSize="11"
               fontWeight="bold"
               fontFamily="JetBrains Mono, monospace"

@@ -26,7 +26,7 @@ export const MatrixDisplay: React.FC<MatrixDisplayProps> = ({
   return (
     <div className={`flex flex-col items-center gap-2 ${className}`}>
       {name && (
-        <span className="text-sm font-bold font-mono text-[#94A3B8]">
+        <span className="text-sm font-bold font-mono text-slate-700">
           Matriz {name} ({dim.rows}×{dim.cols})
         </span>
       )}
@@ -57,22 +57,22 @@ export const MatrixDisplay: React.FC<MatrixDisplayProps> = ({
                 highlightCell[0] === i &&
                 highlightCell[1] === j;
 
-              let cellBg = "bg-[#121829]";
-              let cellBorder = "border-[#1E2942]";
-              let textColor = "text-white";
+              let cellBg = "bg-white";
+              let cellBorder = "border-slate-200";
+              let textColor = "text-slate-800";
 
               if (isCellMatch) {
-                cellBg = "bg-[#34D399]/20";
-                cellBorder = "border-[#34D399]";
-                textColor = "text-[#34D399]";
+                cellBg = "bg-emerald-50";
+                cellBorder = "border-emerald-500 border-2";
+                textColor = "text-emerald-800 font-extrabold";
               } else if (isRowMatch) {
-                cellBg = "bg-[#38BDF8]/20";
-                cellBorder = "border-[#38BDF8]";
-                textColor = "text-[#38BDF8]";
+                cellBg = "bg-blue-50";
+                cellBorder = "border-blue-500 border-2";
+                textColor = "text-blue-800 font-extrabold";
               } else if (isColMatch) {
-                cellBg = "bg-[#FACC15]/20";
-                cellBorder = "border-[#FACC15]";
-                textColor = "text-[#FACC15]";
+                cellBg = "bg-amber-50";
+                cellBorder = "border-amber-500 border-2";
+                textColor = "text-amber-800 font-extrabold";
               }
 
               return (

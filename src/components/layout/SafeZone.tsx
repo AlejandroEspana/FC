@@ -10,7 +10,7 @@ export const SafeZone: React.FC<SafeZoneProps> = ({ children, className = "" }) 
   return (
     <div
       style={{ width: `${CANVAS_WIDTH}px`, height: `${CANVAS_HEIGHT}px` }}
-      className={`bg-[#0A0D18] text-[#F8FAFC] flex flex-col justify-between p-12 overflow-hidden relative select-none ${className}`}
+      className={`bg-[#F8FAFC] text-[#0F172A] flex flex-col justify-between p-12 overflow-hidden relative select-none ${className}`}
     >
       {children}
     </div>

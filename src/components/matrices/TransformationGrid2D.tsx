@@ -52,7 +52,7 @@ export const TransformationGrid2D: React.FC<TransformationGrid2DProps> = ({
         <span className="text-xs uppercase font-mono font-bold text-[#38BDF8]">
           {transformationName}
         </span>
-        <span className="text-xs font-mono text-[#94A3B8] bg-[#121829] px-2.5 py-1 rounded border border-[#1E2942]">
+        <span className="text-xs font-mono text-slate-600 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">
           Progreso: {(progress * 100).toFixed(0)}%
         </span>
       </div>

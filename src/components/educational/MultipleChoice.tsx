@@ -43,31 +43,31 @@ export const MultipleChoice: React.FC<MultipleChoiceProps> = ({
   return (
     <div
       style={{ zIndex: LAYERS.Explanations }}
-      className={`p-7 rounded-2xl bg-[#0F172A]/95 border border-[#1E293B] shadow-2xl backdrop-blur-md flex flex-col gap-5 ${className}`}
+      className={`p-7 rounded-2xl bg-white border border-slate-200 shadow-md flex flex-col gap-5 ${className}`}
     >
       {/* Pregunta y contexto matemático */}
       <div>
         <div className="flex items-center justify-between mb-2">
-          <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-[#FACC15] px-2.5 py-0.5 rounded-full bg-[#FACC15]/10 border border-[#FACC15]/20">
+          <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-amber-700 px-3 py-0.5 rounded-full bg-amber-50 border border-amber-200">
             Ejercicio Interactivo
           </span>
 
           {isThinkingPhase ? (
-            <span className="text-xs font-mono text-[#38BDF8] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
+            <span className="text-xs font-mono text-blue-700 flex items-center gap-1.5 font-bold">
+              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
               Pausa para pensar: {remainingSeconds}s
             </span>
           ) : (
-            <span className="text-xs font-mono text-[#34D399] font-bold flex items-center gap-1.5">
+            <span className="text-xs font-mono text-emerald-700 font-extrabold flex items-center gap-1.5">
               ✓ Respuesta Revelada
             </span>
           )}
         </div>
 
-        <h3 className="text-lg font-bold text-white tracking-tight leading-snug">{question}</h3>
+        <h3 className="text-lg font-extrabold text-slate-900 tracking-tight leading-snug">{question}</h3>
 
         {mathContext && (
-          <div className="mt-2.5 p-3 rounded-xl bg-[#070A12] border border-[#1E293B] flex items-center justify-center">
+          <div className="mt-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 shadow-2xs flex items-center justify-center">
             <Equation latex={mathContext} fontSize="text-xl" block={false} />
           </div>
         )}
@@ -75,10 +75,10 @@ export const MultipleChoice: React.FC<MultipleChoiceProps> = ({
 
       {/* Barra de progreso de cuenta regresiva para pensar */}
       {isThinkingPhase && (
-        <div className="w-full bg-[#070A12] rounded-full h-1.5 overflow-hidden border border-[#1E293B]">
+        <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200 shadow-inner">
           <div
             style={{ width: `${(1 - countdownProgress) * 100}%` }}
-            className="h-full bg-gradient-to-r from-[#38BDF8] to-[#FACC15] transition-all"
+            className="h-full bg-gradient-to-r from-blue-600 to-amber-500 transition-all"
           />
         </div>
       )}
@@ -86,14 +86,14 @@ export const MultipleChoice: React.FC<MultipleChoiceProps> = ({
       {/* Opciones A, B, C, D */}
       <div className="grid grid-cols-2 gap-3">
         {options.map((opt) => {
-          let optionStyles = "bg-[#070A12]/80 border-[#1E293B] text-slate-200";
+          let optionStyles = "bg-slate-50 border-slate-200 text-slate-800 shadow-2xs";
 
           if (!isThinkingPhase) {
             if (opt.isCorrect) {
               optionStyles =
-                "bg-[#34D399]/15 border-[#34D399] text-white ring-2 ring-[#34D399]/40";
+                "bg-emerald-50 border-emerald-500 text-emerald-950 ring-2 ring-emerald-400/40 shadow-xs";
             } else {
-              optionStyles = "bg-[#070A12]/40 border-[#1E293B]/40 text-slate-500 opacity-60";
+              optionStyles = "bg-slate-50/40 border-slate-200/50 text-slate-400 opacity-60";
             }
           }
 
@@ -106,13 +106,13 @@ export const MultipleChoice: React.FC<MultipleChoiceProps> = ({
                 <span
                   className={`w-6 h-6 rounded-lg text-xs font-mono font-extrabold flex items-center justify-center ${
                     !isThinkingPhase && opt.isCorrect
-                      ? "bg-[#34D399] text-black"
-                      : "bg-white/10 text-white"
+                      ? "bg-emerald-600 text-white shadow-2xs"
+                      : "bg-slate-200 text-slate-800"
                   }`}
                 >
                   {opt.id}
                 </span>
-                <span className="text-xs font-sans">{opt.text}</span>
+                <span className="text-xs font-sans font-semibold">{opt.text}</span>
               </div>
 
               {opt.math && <Equation latex={opt.math} fontSize="text-xs" block={false} />}
@@ -123,11 +123,11 @@ export const MultipleChoice: React.FC<MultipleChoiceProps> = ({
 
       {/* Explicación tras la revelación */}
       {!isThinkingPhase && (
-        <div className="p-4 rounded-xl bg-[#34D399]/10 border border-[#34D399]/30 flex flex-col gap-1 transition-all duration-300">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#34D399]">
+        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-300 flex flex-col gap-1 transition-all duration-300 shadow-xs">
+          <span className="text-[10px] font-mono font-extrabold uppercase tracking-wider text-emerald-800">
             Solución y Razonamiento:
           </span>
-          <p className="text-xs text-slate-200 font-sans leading-relaxed">{explanation}</p>
+          <p className="text-xs text-slate-700 font-sans leading-relaxed font-medium">{explanation}</p>
         </div>
       )}
     </div>

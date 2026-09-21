@@ -99,12 +99,12 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
     >
       <div
         style={{ width, height, opacity: animOpacity }}
-        className={`relative rounded-2xl overflow-hidden bg-[#0A0D18] border border-[#1E2942] shadow-2xl ${className}`}
+        className={`relative rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm ${className}`}
       >
         <svg width={width} height={height} className="w-full h-full block">
           <defs>
             <pattern id="grid-dots" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="0.8" fill="#1E2942" />
+              <circle cx="2" cy="2" r="1" fill="#E2E8F0" />
             </pattern>
           </defs>
 
@@ -121,8 +121,8 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
                 y1={0}
                 x2={px}
                 y2={height}
-                stroke="#1E2942"
-                strokeWidth="1"
+                stroke="#E2E8F0"
+                strokeWidth="1.2"
                 strokeDasharray="3 3"
               />
             );
@@ -138,8 +138,8 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
                 y1={py}
                 x2={width}
                 y2={py}
-                stroke="#1E2942"
-                strokeWidth="1"
+                stroke="#E2E8F0"
+                strokeWidth="1.2"
                 strokeDasharray="3 3"
               />
             );
@@ -152,8 +152,8 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
               y1={originY}
               x2={width}
               y2={originY}
-              stroke="#64748B"
-              strokeWidth="2"
+              stroke="#334155"
+              strokeWidth="2.2"
             />
           )}
 
@@ -164,8 +164,8 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
               y1={0}
               x2={originX}
               y2={height}
-              stroke="#64748B"
-              strokeWidth="2"
+              stroke="#334155"
+              strokeWidth="2.2"
             />
           )}
 
@@ -176,12 +176,13 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
                 const [px, py] = toScreen(x, 0);
                 return (
                   <g key={`lbl-x-${x}`}>
-                    <line x1={px} y1={py - 4} x2={px} y2={py + 4} stroke="#8F9CAE" strokeWidth="1.5" />
+                    <line x1={px} y1={py - 4} x2={px} y2={py + 4} stroke="#64748B" strokeWidth="1.5" />
                     <text
                       x={px}
                       y={py + 16}
-                      fill="#64748B"
+                      fill="#475569"
                       fontSize="11"
+                      fontWeight="bold"
                       fontFamily="JetBrains Mono, monospace"
                       textAnchor="middle"
                     >
@@ -194,12 +195,13 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
                 const [px, py] = toScreen(0, y);
                 return (
                   <g key={`lbl-y-${y}`}>
-                    <line x1={px - 4} y1={py} x2={px + 4} y2={py} stroke="#8F9CAE" strokeWidth="1.5" />
+                    <line x1={px - 4} y1={py} x2={px + 4} y2={py} stroke="#64748B" strokeWidth="1.5" />
                     <text
                       x={px - 8}
                       y={py + 4}
-                      fill="#64748B"
+                      fill="#475569"
                       fontSize="11"
+                      fontWeight="bold"
                       fontFamily="JetBrains Mono, monospace"
                       textAnchor="end"
                     >
@@ -209,12 +211,13 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
                 );
               })}
               {/* Origen 0 */}
-              <circle cx={originX} cy={originY} r="3" fill="#8F9CAE" />
+              <circle cx={originX} cy={originY} r="3.5" fill="#334155" />
               <text
                 x={originX - 10}
                 y={originY + 14}
-                fill="#64748B"
+                fill="#475569"
                 fontSize="11"
+                fontWeight="bold"
                 fontFamily="JetBrains Mono, monospace"
               >
                 0
@@ -224,9 +227,9 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
               <text
                 x={width - 20}
                 y={originY - 8}
-                fill="#38BDF8"
+                fill="#2563EB"
                 fontSize="13"
-                fontWeight="bold"
+                fontWeight="extrabold"
                 fontFamily="monospace"
               >
                 X
@@ -234,9 +237,9 @@ export const CoordinatePlane: React.FC<CoordinatePlaneProps> = ({
               <text
                 x={originX + 8}
                 y={20}
-                fill="#38BDF8"
+                fill="#2563EB"
                 fontSize="13"
-                fontWeight="bold"
+                fontWeight="extrabold"
                 fontFamily="monospace"
               >
                 Y

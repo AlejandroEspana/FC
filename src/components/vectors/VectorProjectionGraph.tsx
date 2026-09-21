@@ -59,8 +59,8 @@ const ProjectionOverlaySVG: React.FC<{
         y1={uY}
         x2={pX}
         y2={pY}
-        stroke="#FB7185"
-        strokeWidth="2.5"
+        stroke="#DC2626"
+        strokeWidth="2"
         strokeDasharray="5 4"
       />
 
@@ -68,12 +68,12 @@ const ProjectionOverlaySVG: React.FC<{
       <polyline
         points={`${c1X},${c1Y} ${c2X},${c2Y} ${c3X},${c3Y}`}
         fill="none"
-        stroke="#FB7185"
+        stroke="#DC2626"
         strokeWidth="1.8"
       />
 
       {/* Punto de impacto de la proyección */}
-      <circle cx={pX} cy={pY} r={4.5} fill="#34D399" />
+      <circle cx={pX} cy={pY} r={4.5} fill="#059669" />
     </g>
   );
 };
@@ -119,7 +119,7 @@ export const VectorProjectionGraph: React.FC<VectorProjectionGraphProps> = ({
           y1={height * 0.75}
           x2={width}
           y2={height * 0.75}
-          stroke="#1E293B"
+          stroke="#CBD5E1"
           strokeWidth="1.5"
           strokeDasharray="4 4"
         />
@@ -175,21 +175,21 @@ export const VectorProjectionGraph: React.FC<VectorProjectionGraphProps> = ({
       </CoordinatePlane>
 
       {/* Leyenda de colores claros y métricas numéricas */}
-      <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono bg-black/40 px-4 py-2 rounded-xl border border-white/10 w-full max-w-[560px]">
+      <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 w-full max-w-[560px] shadow-2xs text-slate-700">
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.primary }} />
-          <span>u = ({u[0]}, {u[1]})</span>
+          <span className="font-semibold">u = ({u[0]}, {u[1]})</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.secondary }} />
-          <span>v = ({v[0]}, {v[1]})</span>
+          <span className="font-semibold">v = ({v[0]}, {v[1]})</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.result }} />
-          <span className="font-bold text-white">proj = ({proj[0].toFixed(1)}, {proj[1].toFixed(1)})</span>
+          <span className="font-black text-slate-900">proj = ({proj[0].toFixed(1)}, {proj[1].toFixed(1)})</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-slate-400">comp = {scalarComp.toFixed(2)}</span>
+          <span className="text-slate-500 font-bold">comp = {scalarComp.toFixed(2)}</span>
         </div>
       </div>
     </div>

@@ -143,15 +143,15 @@ export const Cap04_Representation: React.FC = () => {
               accentColor={theme.tertiary}
             >
               <div className="space-y-3 font-mono text-xs">
-                <div className="p-3.5 rounded-xl bg-black/40 border border-white/10 flex items-center justify-between">
-                  <span className="text-sky-400 font-bold font-sans">Versor Horizontal î:</span>
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-slate-900">
+                  <span className="text-blue-700 font-bold font-sans">Versor Horizontal î:</span>
                   <Equation latex="\hat{i} = (1, 0), \quad \|\hat{i}\| = 1" fontSize="text-sm" block={false} />
                 </div>
-                <div className="p-3.5 rounded-xl bg-black/40 border border-white/10 flex items-center justify-between">
-                  <span className="text-amber-400 font-bold font-sans">Versor Vertical ĵ:</span>
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-slate-900">
+                  <span className="text-amber-700 font-bold font-sans">Versor Vertical ĵ:</span>
                   <Equation latex="\hat{j} = (0, 1), \quad \|\hat{j}\| = 1" fontSize="text-sm" block={false} />
                 </div>
-                <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-sans text-xs">
+                <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 font-sans text-xs">
                   Cualquier vector en el plano es la suma de dos movimientos ortogonales escalados por los versores base: v = 3î + 4ĵ.
                 </div>
               </div>

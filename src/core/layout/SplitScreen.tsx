@@ -20,7 +20,7 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({
       {/* Columna Izquierda: Fórmula principal o Gráfica */}
       <div
         style={{ gridColumn: `span ${leftSpan} / span ${leftSpan}` }}
-        className="h-full flex flex-col justify-center items-center p-8 bg-[#121829]/80 rounded-2xl border border-[#1E2942] shadow-2xl relative"
+        className="h-full flex flex-col justify-center items-center p-8 bg-white rounded-2xl border border-slate-200 shadow-md relative"
       >
         {left}
       </div>
@@ -28,7 +28,7 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({
       {/* Columna Derecha: Desglose de componentes, definiciones o leyenda con colores */}
       <div
         style={{ gridColumn: `span ${rightSpan} / span ${rightSpan}` }}
-        className="h-full flex flex-col justify-center gap-4 p-8 bg-[#121829]/40 rounded-2xl border border-[#1E2942]/60 overflow-hidden"
+        className="h-full flex flex-col justify-center gap-4 p-8 bg-slate-50/80 rounded-2xl border border-slate-200 overflow-hidden"
       >
         {right}
       </div>

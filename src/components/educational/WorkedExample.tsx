@@ -38,23 +38,23 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({
   return (
     <div
       style={{ zIndex: LAYERS.Explanations }}
-      className={`p-7 rounded-2xl bg-[#0F172A]/95 border border-[#1E293B] shadow-2xl backdrop-blur-md flex flex-col gap-5 ${className}`}
+      className={`p-7 rounded-2xl bg-white border border-slate-200 shadow-md flex flex-col gap-5 ${className}`}
     >
       {/* Encabezado y Enunciado */}
       <div>
         <div className="flex items-center justify-between mb-1.5">
-          <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-[#38BDF8] px-2.5 py-0.5 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/20">
+          <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-blue-700 px-3 py-0.5 rounded-full bg-blue-50 border border-blue-200">
             {typeBadge}
           </span>
           {targetVariable && (
-            <div className="flex items-center gap-1.5 text-xs font-mono text-[#FACC15]">
-              <span>Incógnita:</span>
+            <div className="flex items-center gap-1.5 text-xs font-mono text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
+              <span className="font-bold">Incógnita:</span>
               <Equation latex={targetVariable} fontSize="text-xs" block={false} />
             </div>
           )}
         </div>
-        <h3 className="text-xl font-bold text-white tracking-tight">{title}</h3>
-        <p className="text-xs text-slate-300 mt-1.5 leading-relaxed font-sans">{prompt}</p>
+        <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">{title}</h3>
+        <p className="text-xs text-slate-700 mt-1.5 leading-relaxed font-sans font-medium">{prompt}</p>
       </div>
 
       {/* Datos Iniciales Dados */}
@@ -63,10 +63,12 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({
           {givenData.map((d, i) => (
             <div
               key={i}
-              className="px-3 py-1.5 rounded-lg bg-[#070A12] border border-[#1E293B] flex items-center gap-2"
+              className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center gap-2 shadow-2xs"
             >
-              <span className="text-[11px] text-[#94A3B8] font-sans">{d.label}:</span>
-              <Equation latex={d.value} fontSize="text-xs" block={false} />
+              <span className="text-[11px] text-slate-600 font-sans font-bold">{d.label}:</span>
+              <div className="text-slate-900 font-bold">
+                <Equation latex={d.value} fontSize="text-xs" block={false} />
+              </div>
             </div>
           ))}
         </div>
@@ -77,17 +79,17 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({
         {steps.map((step, idx) => (
           <div
             key={idx}
-            className="p-3.5 rounded-xl bg-[#070A12]/80 border border-[#1E293B] flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+            className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-2xs"
           >
             <div className="flex items-center gap-2.5">
-              <span className="w-5 h-5 rounded-full bg-white/10 text-white text-[11px] font-mono font-bold flex items-center justify-center shrink-0">
+              <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] font-mono font-black flex items-center justify-center shrink-0 shadow-xs">
                 {idx + 1}
               </span>
-              <span className="text-xs font-medium text-slate-200 font-sans">{step.label}</span>
+              <span className="text-xs font-semibold text-slate-800 font-sans">{step.label}</span>
             </div>
 
             {step.math && (
-              <div className="shrink-0">
+              <div className="shrink-0 text-slate-900 font-bold">
                 <Equation latex={step.math} fontSize="text-sm" block={false} />
               </div>
             )}
@@ -96,18 +98,18 @@ export const WorkedExample: React.FC<WorkedExampleProps> = ({
       </div>
 
       {/* Resultado Final Destacado */}
-      <div className="p-4 rounded-xl bg-[#34D399]/10 border border-[#34D399]/30 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-300 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs">
         <div>
-          <span className="text-[10px] uppercase font-bold text-[#34D399] tracking-wider font-mono block">
+          <span className="text-[10px] uppercase font-black text-emerald-800 tracking-wider font-mono block">
             Resultado Verificado
           </span>
           {finalResult.interpretation && (
-            <p className="text-xs text-emerald-200/90 font-sans mt-0.5">
+            <p className="text-xs text-slate-700 font-sans mt-0.5 font-medium">
               {finalResult.interpretation}
             </p>
           )}
         </div>
-        <div className="p-2 px-4 rounded-lg bg-[#070A12] border border-[#34D399]/40">
+        <div className="p-2 px-4 rounded-lg bg-white border border-slate-200 text-slate-900 shadow-xs">
           <Equation latex={finalResult.math} fontSize="text-lg" block={false} />
         </div>
       </div>

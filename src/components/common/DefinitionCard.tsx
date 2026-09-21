@@ -36,17 +36,17 @@ export const DefinitionCard: React.FC<DefinitionCardProps> = ({
         transform: `scale(${scale})`,
         borderColor: `${accentColor}40`,
       }}
-      className="w-full max-w-4xl mx-auto p-8 rounded-2xl bg-[#121829]/90 border shadow-2xl relative overflow-hidden backdrop-blur-md"
+      className="w-full max-w-4xl mx-auto p-8 rounded-2xl bg-white border border-slate-200 shadow-lg relative overflow-hidden"
     >
       <div
         style={{ backgroundColor: accentColor }}
-        className="absolute top-0 left-0 right-0 h-1.5 opacity-80"
+        className="absolute top-0 left-0 right-0 h-1.5 opacity-90"
       />
 
       <div className="flex items-center gap-3 mb-4">
         <div
-          style={{ backgroundColor: `${accentColor}20`, borderColor: `${accentColor}50` }}
-          className="p-2 rounded-lg border text-white"
+          style={{ backgroundColor: `${accentColor}15`, borderColor: `${accentColor}40` }}
+          className="p-2.5 rounded-xl border text-slate-800"
         >
           <BookOpen className="w-5 h-5" style={{ color: accentColor }} />
         </div>
@@ -54,11 +54,11 @@ export const DefinitionCard: React.FC<DefinitionCardProps> = ({
           <span style={{ color: accentColor }} className="text-xs uppercase font-bold tracking-wider">
             {category}
           </span>
-          <h3 className="text-2xl font-extrabold text-white">{title}</h3>
+          <h3 className="text-2xl font-extrabold text-slate-900">{title}</h3>
         </div>
       </div>
 
-      <div className="text-base text-[#CBD5E1] leading-relaxed font-sans space-y-3">
+      <div className="text-base text-slate-700 leading-relaxed font-sans space-y-3">
         {children}
       </div>
     </div>

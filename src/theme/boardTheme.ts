@@ -15,7 +15,7 @@ export interface TopicThemeConfig {
   badgeBorder: string;
   badgeText: string;
 
-  // Colores principales de alto contraste
+  // Colores principales de alto contraste (Estilo Manim sobre fondo claro)
   primary: string;
   secondary: string;
   tertiary: string;
@@ -23,7 +23,12 @@ export interface TopicThemeConfig {
   warning: string;
   accent: string;
 
-  // Estructura y fondos de tablero
+  // Textos y legibilidad en pizarra clara
+  textPrimary: string;
+  textSecondary: string;
+  textMuted: string;
+
+  // Estructura y fondos de tablero blanco técnico
   boardBg: string;
   boardGrid: string;
   panelBg: string;
@@ -37,69 +42,81 @@ export const TOPIC_THEMES: Record<CourseTopic, TopicThemeConfig> = {
     id: "vectors",
     name: "Álgebra Lineal & Física Clásica",
     topicBadge: "VECTORES & GEOMETRÍA",
-    badgeBg: "rgba(56, 189, 248, 0.12)",
-    badgeBorder: "rgba(56, 189, 248, 0.35)",
-    badgeText: "#38BDF8",
+    badgeBg: "#EFF6FF",
+    badgeBorder: "#BFDBFE",
+    badgeText: "#1D4ED8",
 
-    primary: "#38BDF8",   // Celeste claro luminoso (Vector u / Datos base)
-    secondary: "#FBBF24", // Ámbar cálido claro (Vector v / Operando)
-    tertiary: "#A78BFA",  // Lavanda claro (Proyecciones / Eje 3D)
-    result: "#34D399",    // Verde menta / esmeralda (Vector w resultante)
-    warning: "#FB7185",   // Coral brillante (Vector opuesto / Resta / Error)
-    accent: "#67E8F9",    // Cian brillante
+    primary: "#2563EB",   // Azul Cobalto Manim (Vector u / Datos base)
+    secondary: "#D97706", // Ámbar cálido (Vector v / Operando)
+    tertiary: "#7C3AED",  // Lavanda/Violeta real (Proyecciones / Eje 3D)
+    result: "#059669",    // Verde esmeralda (Vector w resultante)
+    warning: "#DC2626",   // Carmesí intenso (Vector opuesto / Resta / Error)
+    accent: "#0284C7",    // Cian celeste técnico
 
-    boardBg: "#0A1120",
-    boardGrid: "#1B2A47",
-    panelBg: "#0F1A2E",
-    panelBorder: "#1E355B",
-    panelBorderActive: "#38BDF8",
-    glowColor: "rgba(56, 189, 248, 0.25)",
+    textPrimary: "#0F172A",
+    textSecondary: "#334155",
+    textMuted: "#64748B",
+
+    boardBg: "#F8FAFC",   // Pizarra técnica blanco slate
+    boardGrid: "#E2E8F0", // Cuadrícula milimétrica sutil
+    panelBg: "#FFFFFF",   // Tarjeta blanca pura de alto contraste
+    panelBorder: "#E2E8F0",
+    panelBorderActive: "#2563EB",
+    glowColor: "rgba(37, 99, 235, 0.05)",
   },
 
   matrices: {
     id: "matrices",
     name: "Álgebra Lineal Computacional",
     topicBadge: "MATRICES & TRANSFORMACIONES",
-    badgeBg: "rgba(96, 165, 250, 0.12)",
-    badgeBorder: "rgba(96, 165, 250, 0.35)",
-    badgeText: "#60A5FA",
+    badgeBg: "#EEF2FF",
+    badgeBorder: "#C7D2FE",
+    badgeText: "#3730A3",
 
-    primary: "#60A5FA",   // Azul cobalto claro (Matriz A / Filas foco)
-    secondary: "#FB923C", // Naranja mandarina claro (Matriz B / Columnas foco)
-    tertiary: "#FDE047",  // Amarillo sol (Escalares / Índices de dimensión)
-    result: "#4ADE80",    // Verde primavera claro (Matriz C / Producto final)
-    warning: "#F43F5E",   // Carmesí claro (No-conmutatividad AB != BA)
-    accent: "#C084FC",    // Violeta claro (Determinantes y espacios)
+    primary: "#1D4ED8",   // Azul Real (Matriz A / Filas foco)
+    secondary: "#EA580C", // Naranja Mandarina (Matriz B / Columnas foco)
+    tertiary: "#CA8A04",  // Amarillo Mostaza (Escalares / Índices de dimensión)
+    result: "#047857",    // Verde Bosque (Matriz C / Producto final)
+    warning: "#E11D48",   // Rosa Carmesí (No-conmutatividad AB != BA)
+    accent: "#7C3AED",    // Violeta intenso (Determinantes y espacios)
 
-    boardBg: "#0C1026",
-    boardGrid: "#1C244A",
-    panelBg: "#121738",
-    panelBorder: "#232F64",
-    panelBorderActive: "#60A5FA",
-    glowColor: "rgba(96, 165, 250, 0.25)",
+    textPrimary: "#0F172A",
+    textSecondary: "#334155",
+    textMuted: "#64748B",
+
+    boardBg: "#F8FAFC",
+    boardGrid: "#E2E8F0",
+    panelBg: "#FFFFFF",
+    panelBorder: "#E2E8F0",
+    panelBorderActive: "#1D4ED8",
+    glowColor: "rgba(29, 78, 216, 0.05)",
   },
 
   discrete: {
     id: "discrete",
     name: "Sistemas Dinámicos & Modelación",
     topicBadge: "MODELOS DISCRETOS & CAOS",
-    badgeBg: "rgba(45, 212, 191, 0.12)",
-    badgeBorder: "rgba(45, 212, 191, 0.35)",
-    badgeText: "#2DD4BF",
+    badgeBg: "#F0FDFA",
+    badgeBorder: "#99F6E4",
+    badgeText: "#0F766E",
 
-    primary: "#22D3EE",   // Cian glaciar (Secuencias temporales x_n)
-    secondary: "#FBBF24", // Ámbar dorado (Función de transición f(x))
-    tertiary: "#F8FAFC",  // Blanco nieve (Recta identidad y = x)
-    result: "#A3E635",    // Verde lima neón (Puntos fijos atractores estables)
-    warning: "#FB7185",   // Rosa frambuesa brillante (Inestabilidad / Bifurcación)
-    accent: "#E879F9",    // Fucsia claro (Diagramas de órbita y caos)
+    primary: "#0D9488",   // Turquesa / Teal (Secuencias temporales x_n)
+    secondary: "#D97706", // Ámbar dorado (Función de transición f(x))
+    tertiary: "#475569",  // Gris técnico (Recta identidad y = x)
+    result: "#16A34A",    // Verde hoja (Puntos fijos atractores estables)
+    warning: "#BE123C",   // Borgoña brillante (Inestabilidad / Bifurcación)
+    accent: "#9333EA",    // Púrpura dinámico (Diagramas de órbita y caos)
 
-    boardBg: "#081414",
-    boardGrid: "#132D28",
-    panelBg: "#0E1E1C",
-    panelBorder: "#193E37",
-    panelBorderActive: "#2DD4BF",
-    glowColor: "rgba(45, 212, 191, 0.25)",
+    textPrimary: "#0F172A",
+    textSecondary: "#334155",
+    textMuted: "#64748B",
+
+    boardBg: "#F8FAFC",
+    boardGrid: "#E2E8F0",
+    panelBg: "#FFFFFF",
+    panelBorder: "#E2E8F0",
+    panelBorderActive: "#0D9488",
+    glowColor: "rgba(13, 148, 136, 0.05)",
   },
 };
 

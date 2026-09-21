@@ -109,22 +109,22 @@ export const VectorSubtractionGraph: React.FC<VectorSubtractionGraphProps> = ({
         )}
       </CoordinatePlane>
 
-      <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-300 font-mono bg-black/35 px-4 py-2 rounded-xl border border-white/10 w-full max-w-[540px]">
+      <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-700 font-mono bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 w-full max-w-[540px] shadow-2xs">
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.primary }} />
-          <span>u = (4, 2)</span>
+          <span className="font-semibold">u = (4, 2)</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.secondary }} />
-          <span>v = (1.5, 3)</span>
+          <span className="font-semibold">v = (1.5, 3)</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.warning }} />
-          <span>-v (Opuesto)</span>
+          <span className="font-semibold">-v (Opuesto)</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: theme.result }} />
-          <span className="font-bold text-white">u - v (Punta a Punta)</span>
+          <span className="font-black text-slate-900">u - v (Punta a Punta)</span>
         </div>
       </div>
     </div>

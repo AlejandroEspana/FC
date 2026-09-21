@@ -76,7 +76,7 @@ export const ScalarMultGraph: React.FC<ScalarMultGraphProps> = ({
             {regimeName}
           </span>
         </div>
-        <span className="text-xs font-mono font-bold bg-black/40 px-2.5 py-1 rounded-md border border-white/10 text-white">
+        <span className="text-xs font-mono font-bold bg-slate-50 px-2.5 py-1 rounded-md border border-slate-200 text-slate-800 shadow-2xs">
           Factor c = {c.toFixed(2)}
         </span>
       </div>
@@ -88,8 +88,8 @@ export const ScalarMultGraph: React.FC<ScalarMultGraphProps> = ({
           y1={height * 0.8}
           x2={width * 0.95}
           y2={height * 0.2}
-          stroke="#1E293B"
-          strokeWidth="2"
+          stroke="#94A3B8"
+          strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
@@ -97,7 +97,7 @@ export const ScalarMultGraph: React.FC<ScalarMultGraphProps> = ({
         <Vector2D
           from={[0, 0]}
           to={baseV}
-          color="rgba(148, 163, 184, 0.4)"
+          color="rgba(100, 116, 139, 0.4)"
           label="\\vec{v}"
           strokeWidth={2}
         />
@@ -118,12 +118,12 @@ export const ScalarMultGraph: React.FC<ScalarMultGraphProps> = ({
             <text
               x={width / 2 + 10}
               y={height / 2 - 10}
-              fill="white"
+              fill="#0F172A"
               fontSize="12"
               fontFamily="monospace"
               fontWeight="bold"
             >
-              \\vec{0} = (0, 0)
+              \vec{0} = (0, 0)
             </text>
           </g>
         )}

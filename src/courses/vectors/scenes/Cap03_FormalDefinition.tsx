@@ -139,21 +139,21 @@ export const Cap03_FormalDefinition: React.FC = () => {
               accentColor={theme.tertiary}
             >
               <div className="space-y-2 text-xs font-sans">
-                <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 flex items-center justify-between">
-                  <span className="text-slate-300">1. Conmutatividad:</span>
-                  <span className="font-mono text-sky-400 font-bold">u + v = v + u</span>
+                <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
+                  <span className="text-slate-700 font-medium">1. Conmutatividad:</span>
+                  <span className="font-mono text-blue-700 font-bold">u + v = v + u</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 flex items-center justify-between">
-                  <span className="text-slate-300">2. Asociatividad:</span>
-                  <span className="font-mono text-amber-400 font-bold">(u + v) + w = u + (v + w)</span>
+                <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
+                  <span className="text-slate-700 font-medium">2. Asociatividad:</span>
+                  <span className="font-mono text-amber-700 font-bold">(u + v) + w = u + (v + w)</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 flex items-center justify-between">
-                  <span className="text-slate-300">3. Distributividad Escalar:</span>
-                  <span className="font-mono text-emerald-400 font-bold">c(u + v) = cu + cv</span>
+                <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
+                  <span className="text-slate-700 font-medium">3. Distributividad Escalar:</span>
+                  <span className="font-mono text-emerald-700 font-bold">c(u + v) = cu + cv</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 flex items-center justify-between">
-                  <span className="text-slate-300">4. Elemento Unidad:</span>
-                  <span className="font-mono text-purple-400 font-bold">1 · v = v</span>
+                <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
+                  <span className="text-slate-700 font-medium">4. Elemento Unidad:</span>
+                  <span className="font-mono text-purple-700 font-bold">1 · v = v</span>
                 </div>
               </div>
             </BoardPanel>
