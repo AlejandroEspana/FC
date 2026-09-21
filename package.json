@@ -1,0 +1,44 @@
+{
+  "name": "remotion-video-engine",
+  "version": "1.0.0",
+  "description": "Motor profesional de cursos educativos audiovisuales con Remotion, React y TypeScript",
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "start": "remotion preview src/index.ts",
+    "build": "tsc --noEmit",
+    "test": "tsx --test tests/math.test.ts tests/layout.test.ts tests/content.test.ts tests/state.test.ts",
+    "validate": "tsx scripts/validate-course.ts",
+    "render": "remotion render src/index.ts",
+    "render:vectors": "remotion render src/index.ts Vectores-Curso-Completo out/Vectores_Curso_Completo.mp4",
+    "render:matrices": "remotion render src/index.ts Matrices-Curso-Completo out/Matrices_Curso_Completo.mp4",
+    "render:discrete": "remotion render src/index.ts Modelos-Discretos-Curso-Completo out/Modelos_Discretos_Curso_Completo.mp4",
+    "render:all": "npm run render:vectors && npm run render:matrices && npm run render:discrete",
+    "compositions": "remotion compositions src/index.ts",
+    "still": "remotion still src/index.ts"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.218",
+    "@remotion/player": "^4.0.218",
+    "@remotion/shapes": "^4.0.218",
+    "@remotion/tailwind": "^4.0.526",
+    "katex": "^0.16.11",
+    "lucide-react": "^0.453.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.218",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@types/katex": "^0.16.7",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.169.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "tsx": "^4.23.15",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "katex/dist/katex.min.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0A0D18;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #F8FAFC;
+  overflow: hidden;
+}
